@@ -1,0 +1,9 @@
+#10G-NICS#
+SolarFlare-10GNIC
+NetFPGA-10G-NIC
+Intel-X520-A
+
+#MOBO
+
+
+#CPU

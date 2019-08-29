@@ -1,0 +1,63 @@
+source /etc/network/interfaces.d/*
+
+
+
+auto lo
+iface lo inet loopback
+
+
+auto br0
+allow-ovs br0
+iface br0 inet manual
+  ovs_type OVSBridge
+  ovs_ports eth0 eth1 eth2 eth3 vlan5 vlan110 vlan237
+
+auto eth2
+allow-br0 eth2
+iface eth2 inet manual
+  ovs_bridge br0
+  ovs_type OVSPort
+  ovs_options vlan_mode=native-untagged tag=5
+
+auto eth3
+allow-br0 eth3
+iface eth3 inet manual
+ ovs_bridge br0
+ ovs_type OVSPort
+ 
+auto eth1
+allow-br0 eth1
+iface eth1 inet manual
+ ovs_bridge br0
+ ovs_type OVSPort
+
+auto eth0 
+allow-br0 eth0
+iface eth0 inet manual
+ ovs_bridge br0
+ ovs_type OVSPort
+
+
+allow-br0 vlan5
+iface vlan5 inet static
+  address 10.0.5.x
+  netmask 255.255.255.0
+  gateway 10.0.5.x
+  dns-nameservers 1.1.1.1
+  ovs_type OVSIntPort
+  ovs_bridge br0
+  ovs_options tag=5
+
+auto vlan110
+allow-br0 vlan110
+iface vlan110 inet manual
+  ovs_type OVSIntPort
+  ovs_bridge br0
+  ovs_options tag=110
+
+auto vlan237
+allow-br0 vlan237
+iface vlan237 inet manual
+  ovs_type OVSIntPort
+  ovs_bridge br0
+  ovs_options tag=237

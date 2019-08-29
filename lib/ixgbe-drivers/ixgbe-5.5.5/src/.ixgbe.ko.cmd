@@ -1,0 +1,1 @@
+cmd_/opt/ixgbe-5.5.5/src/ixgbe.ko := ld -r -m elf_i386 -T ./scripts/module-common.lds --build-id  -o /opt/ixgbe-5.5.5/src/ixgbe.ko /opt/ixgbe-5.5.5/src/ixgbe.o /opt/ixgbe-5.5.5/src/ixgbe.mod.o ;  true
