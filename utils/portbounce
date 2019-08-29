@@ -1,0 +1,12 @@
+#!/bin/bash
+
+PORT=$1
+
+
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
+ifconfig $PORT down && sleep 6 && ifconfig $PORT up
+
