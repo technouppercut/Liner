@@ -7,4 +7,4 @@ git add -A .
 git commit -am "Update"
 
 
-git clone -u origin master
+git push -u origin master
